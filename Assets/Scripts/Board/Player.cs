@@ -7,12 +7,32 @@ public class Player : MonoBehaviour {
 
     public string playerName;
     public Color playerColor;
+    private Color brown = new Color(0.6f,0.2f,0.2f);
     public Spaces spaces;
     public TextMeshProUGUI dice;
     private GameObject currentSpace;
     public GameManager gameManager;
     public int currency = 0;
+
     public string diceKey;
+
+    void Start() {
+        gameObject.transform.GetChild(0).GetChild(1).GetComponentsInChildren<Renderer>()[0].materials[0].color = playerColor;
+        gameObject.transform.GetChild(0).GetChild(1).GetComponentsInChildren<Renderer>()[0].materials[1].color = Color.white;
+        gameObject.transform.GetChild(0).GetChild(1).GetComponentsInChildren<Renderer>()[0].materials[2].color = brown;
+    }
+
+    void Update() {
+        if(currentSpace == null) {
+            MoveToSpace(spaces.getStartSpace());
+            currentSpace = spaces.getStartSpace();
+        }
+        if (Input.GetKeyDown(diceKey)) {
+            if (gameManager.getCurrentPlayerTurn().getPlayerName() == this.getPlayerName() && !gameManager.getMinigameTime()) {
+                RollDice();
+            }
+        }
+    }
 
     void MoveToSpace(GameObject spaceToMove) {
         Vector3 newPosition = new Vector3(spaceToMove.transform.position.x, spaceToMove.transform.position.y + 1.5f, spaceToMove.transform.position.z);
@@ -47,7 +67,7 @@ public class Player : MonoBehaviour {
             }
         }
         if (color == Color.green) {
-            Debug.Log("Green");
+            //Debug.Log("Green");
         }
     }
 
@@ -57,23 +77,5 @@ public class Player : MonoBehaviour {
 
     public string getPlayerName() {
         return playerName;
-    }
-
-    void Update()
-    {
-        if(currentSpace == null) {
-            MoveToSpace(spaces.getStartSpace());
-            currentSpace = spaces.getStartSpace();
-        }
-        if (Input.GetKeyDown(diceKey))
-        {
-            if (gameManager.getCurrentPlayerTurn().getPlayerName() == this.getPlayerName()) {
-                RollDice();
-            }
-        }
-    }
-
-    void Start() {
-        transform.GetComponent<Renderer>().material.color = playerColor;
     }
 }

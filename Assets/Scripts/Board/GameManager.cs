@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ public class GameManager : MonoBehaviour {
     public TextMeshProUGUI playerThreeUI;
     public TextMeshProUGUI playerFourUI;
 
+    public bool miniGameTime = false;
+
     void Start() {
         playerObjects.Add(playerOne);
         playerObjects.Add(playerTwo);
@@ -47,6 +50,10 @@ public class GameManager : MonoBehaviour {
         playerFourUI.text = "Coins: " + playerFourCurrency.ToString();
     }
 
+    public bool getMinigameTime() {
+        return miniGameTime;
+    }
+
     public Player getCurrentPlayerTurn() {
         return currentPlayerTurn;
     }
@@ -54,6 +61,11 @@ public class GameManager : MonoBehaviour {
     public void setCurrentPlayerTurn(Player player) {
         currentPlayerTurn = player;
         currentPlayerTurnUI.text = currentPlayerTurn.getPlayerName() + "'s Turn";
+    }
+
+    public void setEndOfTurn() {
+        currentPlayerTurnUI.text = "Minigame time!";
+        miniGameTime = true;
     }
 
      public static List<Player> Fisher_Yates_Shuffle (List<Player>aList) {
@@ -87,7 +99,7 @@ public class GameManager : MonoBehaviour {
                 setCurrentPlayerTurn(playerObjects[currentIndex + 1]);
                 break;
             case 3:
-                setCurrentPlayerTurn(playerObjects[0]);
+                setEndOfTurn();
                 break;
         }
     }
