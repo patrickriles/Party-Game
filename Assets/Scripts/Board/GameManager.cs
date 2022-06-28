@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+    public static GameManager Instance;
+
     public List<Player> playerObjects = new List<Player>();
     public Player playerOne;
     public Player playerTwo;
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour {
 
     public Player currentPlayerTurn;
     public TextMeshProUGUI currentPlayerTurnUI;
+    public TextMeshProUGUI dice;
 
     private int playerOneCurrency;
     private int playerTwoCurrency;
@@ -32,8 +35,17 @@ public class GameManager : MonoBehaviour {
         playerObjects.Add(playerTwo);
         playerObjects.Add(playerThree);
         playerObjects.Add(playerFour);
-        playerObjects = Fisher_Yates_Shuffle(playerObjects);
         setCurrentPlayerTurn(playerObjects[0]);
+    }
+
+    private void Awake() {
+        if (Instance != null) {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     void FixedUpdate() {
@@ -48,6 +60,12 @@ public class GameManager : MonoBehaviour {
 
         playerFourCurrency = playerFour.getCurrency();
         playerFourUI.text = "Coins: " + playerFourCurrency.ToString();
+
+        if(miniGameTime) {
+            miniGameTime = false;
+            dice.text = "";
+            SceneManager.LoadScene("Minigame_BallAvoider");
+        }
     }
 
     public bool getMinigameTime() {
@@ -68,7 +86,7 @@ public class GameManager : MonoBehaviour {
         miniGameTime = true;
     }
 
-     public static List<Player> Fisher_Yates_Shuffle (List<Player>aList) {
+     public static List<Player> Fisher_Yates_Shuffle (List<Player> aList) {
  
          System.Random _random = new System.Random();
  
@@ -100,6 +118,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case 3:
                 setEndOfTurn();
+                setCurrentPlayerTurn(playerObjects[0]);
                 break;
         }
     }

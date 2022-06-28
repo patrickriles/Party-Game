@@ -7,7 +7,9 @@ public class Spaces : MonoBehaviour {
 
     public List<GameObject> spaceObjects = new List<GameObject>();
     public List<Color> spaceColours = new List<Color>();
+    public static Spaces Instance;
     public int numOfSpaces = 0;
+
     void Start() {
         foreach(Transform child in transform) {
 
@@ -28,6 +30,16 @@ public class Spaces : MonoBehaviour {
             spaceObjects.Add(child.gameObject);
         }
         numOfSpaces = numberOfSpaces(spaceObjects);
+    }
+
+    private void Awake() {
+        if (Instance != null) {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     public GameObject getSpace(int spaceNumber) {
