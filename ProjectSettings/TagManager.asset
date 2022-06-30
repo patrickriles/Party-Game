@@ -9,6 +9,7 @@ TagManager:
   - Spaces
   - Players
   - UI
+  - Persistant
   layers:
   - Default
   - TransparentFX

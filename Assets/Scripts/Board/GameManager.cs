@@ -35,17 +35,8 @@ public class GameManager : MonoBehaviour {
         playerObjects.Add(playerTwo);
         playerObjects.Add(playerThree);
         playerObjects.Add(playerFour);
+        playerObjects = Fisher_Yates_Shuffle(playerObjects);
         setCurrentPlayerTurn(playerObjects[0]);
-    }
-
-    private void Awake() {
-        if (Instance != null) {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     void FixedUpdate() {

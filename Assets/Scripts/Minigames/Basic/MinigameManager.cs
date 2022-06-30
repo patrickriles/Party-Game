@@ -8,10 +8,7 @@ public class MinigameManager : MonoBehaviour {
 
     public List<PlayerWithMovement> playerObjects = new List<PlayerWithMovement>();
 
-    public GameObject GameManager;
-    public GameObject Spaces;
-    public GameObject Players;
-    public GameObject UI;
+    public GameObject Persistant;
 
     public PlayerWithMovement playerOne;
     public PlayerWithMovement playerTwo;
@@ -28,14 +25,8 @@ public class MinigameManager : MonoBehaviour {
         playerObjects.Add(playerTwo);
         playerObjects.Add(playerThree);
         playerObjects.Add(playerFour);
-        GameManager = GameObject.FindWithTag("GameManager");
-        Spaces = GameObject.FindWithTag("Spaces");
-        Players = GameObject.FindWithTag("Players");
-        UI = GameObject.FindWithTag("UI");
-        GameManager.SetActive(false);
-        Spaces.SetActive(false);
-        Players.SetActive(false);
-        UI.SetActive(false);
+        Persistant = GameObject.FindWithTag("Persistant");
+        Persistant.SetActive(false);
     }
 
     void Update() {
@@ -43,10 +34,7 @@ public class MinigameManager : MonoBehaviour {
             miniGameOver = true;
             winner = playerObjects[0];
             minigameWinner.text = $"{playerObjects[0].GetPlayerName()} wins!!";
-            GameManager.SetActive(true);
-            Spaces.SetActive(true);
-            Players.SetActive(true);
-            UI.SetActive(true);
+            Persistant.SetActive(true);
             SceneManager.LoadScene("SimpleMap");
         }
     }

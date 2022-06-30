@@ -10,7 +10,7 @@ public class Player : MonoBehaviour {
     private Color brown = new Color(0.6f,0.2f,0.2f);
     public Spaces spaces;
     public TextMeshProUGUI dice;
-    private GameObject currentSpace;
+    public GameObject currentSpace;
     public GameManager gameManager;
     public int currency = 0;
 
