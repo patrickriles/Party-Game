@@ -6,7 +6,14 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     public string playerName;
+
+    [SerializeField]
+    private int playerIndex = 0;
+
     public Color playerColor;
+
+    private Vector2 inputVector = Vector2.zero;
+
     private Color brown = new Color(0.6f,0.2f,0.2f);
     public Spaces spaces;
     public TextMeshProUGUI dice;
@@ -27,11 +34,6 @@ public class Player : MonoBehaviour {
             MoveToSpace(spaces.getStartSpace());
             currentSpace = spaces.getStartSpace();
         }
-        if (Input.GetKeyDown(diceKey)) {
-            if (gameManager.getCurrentPlayerTurn().getPlayerName() == this.getPlayerName() && !gameManager.getMinigameTime()) {
-                RollDice();
-            }
-        }
     }
 
     void MoveToSpace(GameObject spaceToMove) {
@@ -39,7 +41,7 @@ public class Player : MonoBehaviour {
         transform.position = newPosition;
     }
 
-    void RollDice() {
+    public void RollDice() {
         int roll = Random.Range(1, 10);
         dice.text = roll.ToString();
         int newIndex = spaces.getSpaceIndex(currentSpace) + roll;
@@ -71,11 +73,19 @@ public class Player : MonoBehaviour {
         }
     }
 
+    public void SetInputVector(Vector2 direction) {
+        inputVector = direction;
+    }
+
     public int getCurrency() {
         return currency;
     }
 
     public string getPlayerName() {
         return playerName;
+    }
+
+    public int GetPlayerIndex() {
+        return playerIndex;
     }
 }

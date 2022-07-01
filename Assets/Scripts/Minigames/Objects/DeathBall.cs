@@ -17,7 +17,7 @@ public class DeathBall : MonoBehaviour {
     void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Player") {
             Destroy(collision.gameObject);
-            minigameManager.removePlayerFromArray(collision.gameObject.GetComponent<PlayerWithMovement>());
+            minigameManager.removePlayerFromArray(collision.gameObject.GetComponent<PlayerMovement>());
         }
         if (collision.gameObject.tag == "Wall") {
             rb.velocity = Vector3.Reflect(transform.position, collision.GetContact(0).normal);

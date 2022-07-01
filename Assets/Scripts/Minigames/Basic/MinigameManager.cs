@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class MinigameManager : MonoBehaviour {
 
-    public List<PlayerWithMovement> playerObjects = new List<PlayerWithMovement>();
+    public List<PlayerMovement> playerObjects = new List<PlayerMovement>();
 
     public GameObject Persistant;
 
-    public PlayerWithMovement playerOne;
-    public PlayerWithMovement playerTwo;
-    public PlayerWithMovement playerThree;
-    public PlayerWithMovement playerFour;
+    public PlayerMovement playerOne;
+    public PlayerMovement playerTwo;
+    public PlayerMovement playerThree;
+    public PlayerMovement playerFour;
 
     public TextMeshProUGUI minigameWinner;
-    public PlayerWithMovement winner;
+    public PlayerMovement winner;
 
     private bool miniGameOver = false;
 
@@ -26,7 +26,7 @@ public class MinigameManager : MonoBehaviour {
         playerObjects.Add(playerThree);
         playerObjects.Add(playerFour);
         Persistant = GameObject.FindWithTag("Persistant");
-        Persistant.SetActive(false);
+       // Persistant.SetActive(false);
     }
 
     void Update() {
@@ -43,7 +43,7 @@ public class MinigameManager : MonoBehaviour {
         return playerObjects.Count;
     }
 
-    public void removePlayerFromArray(PlayerWithMovement player) {
+    public void removePlayerFromArray(PlayerMovement player) {
         int index = playerObjects.IndexOf(player);
         playerObjects.RemoveAt(index);
     }
