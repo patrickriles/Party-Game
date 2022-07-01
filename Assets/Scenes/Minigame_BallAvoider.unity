@@ -603,6 +603,82 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &859768588
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 859768590}
+  - component: {fileID: 859768589}
+  m_Layer: 0
+  m_Name: PlayerInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &859768589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859768588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NotificationBehavior: 0
+  m_MaxPlayerCount: 4
+  m_AllowJoining: 1
+  m_JoinBehavior: 0
+  m_PlayerJoinedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_PlayerLeftEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_JoinAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: 
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_PlayerPrefab: {fileID: 6517343614012863717, guid: bd7e3db4965de4b62bcf9a82fc277df8, type: 3}
+  m_SplitScreen: 0
+  m_MaintainAspectRatioInSplitScreen: 0
+  m_FixedNumberOfSplitScreens: -1
+  m_SplitScreenRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!4 &859768590
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859768588}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257503953
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,7 +890,8 @@ GameObject:
   - component: {fileID: 1462903386}
   - component: {fileID: 1462903385}
   - component: {fileID: 1462903388}
-  - component: {fileID: 1462903389}
+  - component: {fileID: 1462903391}
+  - component: {fileID: 1462903390}
   m_Layer: 0
   m_Name: Player3_Minigame_BallAvoider
   m_TagString: Player
@@ -917,7 +994,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &1462903389
+--- !u!143 &1462903390
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462903383}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1462903391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -926,10 +1021,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1462903383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5206c483c68db4428839e4b54088f799, type: 3}
+  m_Script: {fileID: 11500000, guid: 229a861cbd29243dfba849572dcc5294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  MoveSpeed: 1
+  playerIndex: 2
   PlayerName: Player 3
 --- !u!1 &1543037458
 GameObject:
@@ -944,7 +1040,8 @@ GameObject:
   - component: {fileID: 1543037461}
   - component: {fileID: 1543037460}
   - component: {fileID: 1543037463}
-  - component: {fileID: 1543037464}
+  - component: {fileID: 1543037466}
+  - component: {fileID: 1543037465}
   m_Layer: 0
   m_Name: Player2_Minigame_BallAvoider
   m_TagString: Player
@@ -1047,7 +1144,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &1543037464
+--- !u!143 &1543037465
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543037458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1543037466
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1056,10 +1171,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1543037458}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5206c483c68db4428839e4b54088f799, type: 3}
+  m_Script: {fileID: 11500000, guid: 229a861cbd29243dfba849572dcc5294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  MoveSpeed: 1
+  playerIndex: 1
   PlayerName: Player 2
 --- !u!1 &1762473558
 GameObject:
@@ -1109,8 +1225,8 @@ GameObject:
   - component: {fileID: 1806827009}
   - component: {fileID: 1806827008}
   - component: {fileID: 1806827011}
-  - component: {fileID: 1806827015}
   - component: {fileID: 1806827016}
+  - component: {fileID: 1806827018}
   m_Layer: 0
   m_Name: Player1_Minigame_BallAvoider
   m_TagString: Player
@@ -1213,20 +1329,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &1806827015
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806827006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5206c483c68db4428839e4b54088f799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
-  PlayerName: Player 1
 --- !u!114 &1806827016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1236,31 +1338,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1806827006}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 229a861cbd29243dfba849572dcc5294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d6803891c935541158e4acd70f8a2acf, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 70a1aac7-00c9-4a63-9a2e-a211e3fc8bc3
-    m_ActionName: Gameplay1/Move[/Keyboard/a,/Keyboard/d,/Keyboard/w,/Keyboard/s]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay1
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 1377644265}
+  MoveSpeed: 1
+  playerIndex: 0
+  PlayerName: Player 1
+--- !u!143 &1806827018
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806827006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1862308576
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,10 +1635,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObjects: []
-  playerOne: {fileID: 1806827015}
-  playerTwo: {fileID: 1543037464}
-  playerThree: {fileID: 1462903389}
-  playerFour: {fileID: 2019194026}
+  Persistant: {fileID: 0}
+  playerOne: {fileID: 0}
+  playerTwo: {fileID: 0}
+  playerThree: {fileID: 0}
+  playerFour: {fileID: 0}
   minigameWinner: {fileID: 2025936480}
   winner: {fileID: 0}
 --- !u!1 &1998947730
@@ -1651,7 +1753,8 @@ GameObject:
   - component: {fileID: 2019194023}
   - component: {fileID: 2019194022}
   - component: {fileID: 2019194025}
-  - component: {fileID: 2019194026}
+  - component: {fileID: 2019194028}
+  - component: {fileID: 2019194027}
   m_Layer: 0
   m_Name: Player4_Minigame_BallAvoider
   m_TagString: Player
@@ -1754,7 +1857,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
---- !u!114 &2019194026
+--- !u!143 &2019194027
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019194020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2019194028
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1763,10 +1884,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2019194020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5206c483c68db4428839e4b54088f799, type: 3}
+  m_Script: {fileID: 11500000, guid: 229a861cbd29243dfba849572dcc5294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
+  MoveSpeed: 1
+  playerIndex: 3
   PlayerName: Player 4
 --- !u!1 &2025936478
 GameObject:
@@ -1961,6 +2083,14 @@ PrefabInstance:
     - target: {fileID: 4379444539191837141, guid: 4a26680196c4344fb89b0ee4a1823d1e, type: 3}
       propertyPath: m_Name
       value: DeathBall
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379444539191837141, guid: 4a26680196c4344fb89b0ee4a1823d1e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4379444539191837142, guid: 4a26680196c4344fb89b0ee4a1823d1e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a26680196c4344fb89b0ee4a1823d1e, type: 3}

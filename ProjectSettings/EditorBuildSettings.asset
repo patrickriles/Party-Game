@@ -11,4 +11,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minigame_BallAvoider.unity
     guid: 686856cde9f80418abed3c38ab7f82d7
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 644a914da879f4fb5b7c0193fa60ed5f, type: 2}
