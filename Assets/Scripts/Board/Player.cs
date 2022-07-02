@@ -38,7 +38,17 @@ public class Player : MonoBehaviour {
 
     void MoveToSpace(GameObject spaceToMove) {
         Vector3 newPosition = new Vector3(spaceToMove.transform.position.x, spaceToMove.transform.position.y + 1.5f, spaceToMove.transform.position.z);
-        transform.position = newPosition;
+        StartCoroutine(MoveTo(transform, newPosition, 1f));
+    }
+
+    IEnumerator MoveTo (Transform objectToMove, Vector3 targetPosition, float timeToTake) {
+        float t = 0;
+        Vector3 originalPosition = objectToMove.position;
+        while (t < 1) {
+            t += Time.deltaTime / timeToTake;
+            objectToMove.position = Vector3.Lerp (originalPosition, targetPosition, t);
+            yield return null;
+        }
     }
 
     public void RollDice() {
